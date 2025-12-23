@@ -40,7 +40,7 @@ unset_option() {
 
 
 main() {
-    black="181818";
+    black="#181818";
     navy="#1a1b26";
     gray="#222222";
     cyan="#9aa0b8";
@@ -74,7 +74,7 @@ main() {
     set message-command-style "fg=$black,bg=$yellow"
 
     # Pane styling
-    set pane-border-style "fg=$thm_hl_high"
+    set pane-border-style "fg=$hl_high"
     set pane-active-border-style "fg=$yellow"
     set display-panes-active-colour "${text}"
     set display-panes-colour "${yellow}"
