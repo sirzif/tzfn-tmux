@@ -81,7 +81,7 @@ main() {
 
     # Windows
     setw window-status-style "fg=${bright_blue},bg=${black}"
-    setw window-status-activity-style "fg=${black},bg=${magneta}"
+    setw window-status-activity-style "fg=${black},bg=${megenta}"
     setw window-status-current-style "fg=${yellow},bg=${black}"
 
     # Statusline base command configuration: No need to touch anything here
@@ -231,7 +231,7 @@ main() {
     # These variables are the defaults so that the setw and set calls are easier to parse
 
     local show_window
-    readonly show_window=" #[fg=$bright_cyan]$current_window_icon #[fg=$magneta]#W$spacer"
+    readonly show_window=" #[fg=$bright_cyan]$current_window_icon #[fg=$megenta]#W$spacer"
 
     local show_window_in_window_status
     show_window_in_window_status="#[fg=$bright_blue]#I#[fg=$bright_blue,]$left_separator#[fg=$bright_blue]#W"
@@ -252,7 +252,7 @@ main() {
     readonly show_date_time=" #[fg=$blue]$date_time#[fg=$bright_cyan]$right_separator#[fg=$bright_cyan]$date_time_icon "
 
     local show_directory
-    readonly show_directory="$spacer#[fg=$bright_cyan]$current_folder_icon #[fg=$magneta]#{b:pane_current_path} "
+    readonly show_directory="$spacer#[fg=$bright_cyan]$current_folder_icon #[fg=$megenta]#{b:pane_current_path} "
 
     local show_directory_in_window_status
     # BUG: It doesn't let the user pass through a custom window name
@@ -300,7 +300,7 @@ main() {
         show_directory_in_window_status_current="#[fg=$yellow,bg=$bar_bg_disabled_color_option]#I#[fg=$yellow,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$yellow,bg=$bar_bg_disabled_color_option]#{b:pane_current_path}"
         set window-status-style "fg=$bright_blue,bg=$bar_bg_disabled_color_option"
         set window-status-current-style "fg=$yellow,bg=$bar_bg_disabled_color_option"
-        set window-status-activity-style "fg=$magneta,bg=$bar_bg_disabled_color_option"
+        set window-status-activity-style "fg=$megenta,bg=$bar_bg_disabled_color_option"
         set message-style "fg=$cyan,bg=$bar_bg_disabled_color_option"
     fi
 
