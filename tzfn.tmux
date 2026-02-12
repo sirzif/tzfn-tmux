@@ -41,17 +41,17 @@ unset_option() {
 
 main() {
     black="#201822";
-    bright_black="#6c5172";
+    black2="#6c5172";
     gray="#362839";
-    cyan="#767a90";
-    bright_cyan="#9aa0b8";
+    cyan="#00c2d6";
+    cyan2="#33edf2";
     text="#d6d9e0";
     red="#fc5f72";
     yellow="#ffb703";
-    magenta="#ff80ab";
+    magenta="#e11d74";
     green="#00c9ad";
     blue="#017d83";
-    bright_blue="#00a7a3";
+    blue2="#00a7a3";
     hl_low="#242428";
     hl_mid="#34363d";
     hl_high="#5e5a7a";
@@ -80,7 +80,7 @@ main() {
     set display-panes-colour "${yellow}"
 
     # Windows
-    setw window-status-style "fg=${bright_blue},bg=${black}"
+    setw window-status-style "fg=${blue2},bg=${black}"
     setw window-status-activity-style "fg=${black},bg=${magenta}"
     setw window-status-current-style "fg=${yellow},bg=${black}"
 
@@ -196,7 +196,7 @@ main() {
     local window_status_separator
     window_status_separator="$(get_tmux_option "@tzfn_window_status_separator" "  ")"
 
-    # This setting does nothing by itself, it enables the 2 below it to toggle the simplified bar
+    # This setting does nothing by itself, it enables the 3 below it to toggle the simplified bar
     local prioritize_windows
     prioritize_windows="$(get_tmux_option "@tzfn_prioritize_windows" "")"
 
@@ -209,7 +209,7 @@ main() {
     user_window_count="$(get_tmux_option "@tzfn_window_count" "")"
 
     # Custom window status that goes between the number and the window name
-    local custom_window_sep="#[fg=$bright_blue]#I#[fg=$bright_blue,]$window_separator#[fg=$bright_blue]#W"
+    local custom_window_sep="#[fg=$blue2]#I#[fg=$blue2,]$window_separator#[fg=$blue2]#W"
     local custom_window_sep_current="#I#[fg=$yellow,bg=""]$window_separator#[fg=$yellow,bg=""]#W"
 
     local right_separator
@@ -231,28 +231,28 @@ main() {
     # These variables are the defaults so that the setw and set calls are easier to parse
 
     local show_window
-    readonly show_window=" #[fg=$bright_cyan]$current_window_icon #[fg=$magenta]#W$spacer"
+    readonly show_window=" #[fg=$cyan2]$current_window_icon #[fg=$magenta]#W$spacer"
 
     local show_window_in_window_status
-    show_window_in_window_status="#[fg=$bright_blue]#I#[fg=$bright_blue,]$left_separator#[fg=$bright_blue]#W"
+    show_window_in_window_status="#[fg=$blue2]#I#[fg=$blue2,]$left_separator#[fg=$blue2]#W"
 
     local show_window_in_window_status_current
-    show_window_in_window_status_current="#I#[fg=$yellow,bg=""]$left_separator#[fg=$yellow,bg=""]#W"
+    show_window_in_window_status_current="#I#[fg=$red,bg=""]$left_separator#[fg=$red,bg=""]#W"
 
     local show_session
     readonly show_session=" #[fg=#{?client_prefix,$red,$text}]$current_session_icon #[fg=$text]#S "
 
     local show_user
-    readonly show_user="#[fg=$bright_blue]#(whoami)#[fg=$bright_cyan]$right_separator#[fg=$bright_cyan]$username_icon"
+    readonly show_user="#[fg=$blue2]#(whoami)#[fg=$cyan2]$right_separator#[fg=$cyan2]$username_icon"
 
     local show_host
-    readonly show_host="$spacer#[fg=$text]#H#[fg=$bright_cyan]$right_separator#[fg=$bright_cyan]$hostname_icon"
+    readonly show_host="$spacer#[fg=$text]#H#[fg=$cyan2]$right_separator#[fg=$cyan2]$hostname_icon"
 
     local show_date_time
-    readonly show_date_time=" #[fg=$blue]$date_time#[fg=$bright_cyan]$right_separator#[fg=$bright_cyan]$date_time_icon "
+    readonly show_date_time=" #[fg=$blue]$date_time#[fg=$cyan2]$right_separator#[fg=$cyan2]$date_time_icon "
 
     local show_directory
-    readonly show_directory="$spacer#[fg=$bright_cyan]$current_folder_icon #[fg=$magenta]#{b:pane_current_path} "
+    readonly show_directory="$spacer#[fg=$cyan2]$current_folder_icon #[fg=$magenta]#{b:pane_current_path} "
 
     local show_directory_in_window_status
     # BUG: It doesn't let the user pass through a custom window name
@@ -294,11 +294,11 @@ main() {
     # TEST: This needs to be tested further
     if [[ "$bar_bg_disable" == "on" ]]; then
         set status-style "fg=$green,bg=$bar_bg_disabled_color_option"
-        show_window_in_window_status="#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]#I#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]#W"
+        show_window_in_window_status="#[fg=$blue2,bg=$bar_bg_disabled_color_option]#I#[fg=$blue2,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$blue2,bg=$bar_bg_disabled_color_option]#W"
         show_window_in_window_status_current="#[fg=$yellow,bg=$bar_bg_disabled_color_option]#I#[fg=$yellow,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$yellow,bg=$bar_bg_disabled_color_option]#W"
-        show_directory_in_window_status="#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]#I#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$bright_blue,bg=$bar_bg_disabled_color_option]#{b:pane_current_path}"
+        show_directory_in_window_status="#[fg=$blue2,bg=$bar_bg_disabled_color_option]#I#[fg=$blue2,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$blue2,bg=$bar_bg_disabled_color_option]#{b:pane_current_path}"
         show_directory_in_window_status_current="#[fg=$yellow,bg=$bar_bg_disabled_color_option]#I#[fg=$yellow,bg=$bar_bg_disabled_color_option]$left_separator#[fg=$yellow,bg=$bar_bg_disabled_color_option]#{b:pane_current_path}"
-        set window-status-style "fg=$bright_blue,bg=$bar_bg_disabled_color_option"
+        set window-status-style "fg=$blue2,bg=$bar_bg_disabled_color_option"
         set window-status-current-style "fg=$yellow,bg=$bar_bg_disabled_color_option"
         set window-status-activity-style "fg=$magenta,bg=$bar_bg_disabled_color_option"
         set message-style "fg=$cyan,bg=$bar_bg_disabled_color_option"
